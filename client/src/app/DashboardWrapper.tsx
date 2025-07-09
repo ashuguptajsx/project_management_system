@@ -1,4 +1,6 @@
-import React from 'react'
+"use client"
+
+
 import Navbar from "@/app/(components)/Navbar";
 import Sidebar from "@/app/(components)/Sidebar";
 import StoreProvider, { useAppSelector } from './redux';
@@ -7,15 +9,18 @@ import StoreProvider, { useAppSelector } from './redux';
 
 const DashboardLayout = ({children}:{children:React.ReactNode}) => {
 
-  const isSidebarCollapsed = useAppSelector((state) => state.global.isSidebarCollapsed);
+  // Adjust the type of state to match your root state shape
+    const isSidebarCollapsed = useAppSelector((state: any) => state.global.isSidebarCollapsed);
 
+
+  
 
 
 
   return (
     <div className='flex min-h-screen bg-gray-50 text-gray-900'>
         <Sidebar />
-        <main className="flex w-full flex-col  bg-gray-50 md:pl-64 ">
+        <main className={`flex w-full flex-col  bg-gray-50 md:pl-64 ${isSidebarCollapsed ? "" : "md:pl-64 "}` }>
             <Navbar />
             {children}
         </main>
