@@ -13,6 +13,11 @@ import {
   Users,
   ChevronDown,
   ChevronUp,
+  ShieldAlert,
+  AlertTriangle,
+  AlertOctagon,
+  Layers3,
+  AlertCircle,
 } from "lucide-react";
 import { LucideIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -68,16 +73,42 @@ const Sidebar = () => {
           <SidebarLink icon={User} label="Users" href="/users" />
           <SidebarLink icon={Users} label="Teams" href="/teams" />
         </nav>
-        <button onClick = {() =>{
-          setShowProjects((prev) => !prev);
-        }} className=" flex w-full items-center justify-center px-8 py-3 text-gray-500">
+        <button
+          onClick={() => {
+            setShowProjects((prev) => !prev);
+          }}
+          className=" flex w-full items-center justify-between px-8 py-3 text-gray-500 cursor-pointer"
+        >
           <span className="">Projects </span>
           {showProjects ? (
-            <ChevronUp className="ml-2 h-4 w-4 text-gray-500" />
+            <ChevronUp className=" h-4 w-4 text-gray-500" />
           ) : (
-            <ChevronDown className="ml-2 h-4 w-4 text-gray-500" />
+            <ChevronDown className=" h-4 w-4 text-gray-500" />
           )}
         </button>
+
+        <button
+          onClick={() => {
+            setShowPriority((prev) => !prev);
+          }}
+          className="flex w-full items-center justify-between px-8 py-3 text-gray-500 cursor-pointer"
+        >
+          <span className="">Priorities</span>
+          {showPriority ? (
+            <ChevronUp className="h-4 w-4 text-gray-500" />
+          ) : (
+            <ChevronDown className="h-4 w-4 text-gray-500" />
+          )}
+        </button>
+        {showPriority && (
+          <>
+          <SidebarLink icon = {AlertCircle} label = "Urgent" href = "/priority/urgent"/>
+          <SidebarLink icon = {ShieldAlert} label = "High" href = "/priority/high"/>
+          <SidebarLink icon = {AlertTriangle} label = "Medium" href = "/priority/medium"/>
+          <SidebarLink icon = {AlertOctagon} label = "Low" href = "/priority/low"/>
+          <SidebarLink icon = {Layers3} label = "Backlog" href = "/priority/backlog"/>
+          </>
+        )}
       </div>
     </div>
   );
