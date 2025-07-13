@@ -9,7 +9,7 @@ import StoreProvider, { useAppSelector } from './redux';
 
 const DashboardLayout = ({children}:{children:React.ReactNode}) => {
 
-  // Adjust the type of state to match your root state shape
+ 
     const isSidebarCollapsed = useAppSelector((state: any) => state.global.isSidebarCollapsed);
 
 

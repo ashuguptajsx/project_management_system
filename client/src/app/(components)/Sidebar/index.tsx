@@ -63,7 +63,6 @@ const Sidebar = () => {
             </div>
           </div>
         </div>
-        {/* Navigation */}
         <nav className="z-10 w-full">
           <SidebarLink icon={Home} label="Home" href="/" />
 
