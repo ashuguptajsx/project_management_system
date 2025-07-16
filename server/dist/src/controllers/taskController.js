@@ -24,22 +24,33 @@ const getTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 assignee: true,
                 comments: true,
                 attachments: true,
-            }
+            },
         });
         res.json(tasks);
     }
     catch (error) {
-        res.status(500).json({ message: `Failed to fetch tasks: ${error.message}` });
+        res
+            .status(500)
+            .json({ message: `Failed to fetch tasks: ${error.message}` });
     }
 });
 exports.getTasks = getTasks;
 const createTask = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { title, description, status, priority, tags, startDate, dueDate, points, projectId, authorUserId, assignedUserId } = req.body;
+    const { title, description, status, priority, tags, startDate, dueDate, points, projectId, authorUserId, assignedUserId, } = req.body;
     try {
         const newTask = yield prisma.task.create({
             data: {
-                title, description, status, priority, tags, startDate, dueDate, points, projectId, authorUserId,
-                assignedUserId
+                title,
+                description,
+                status,
+                priority,
+                tags,
+                startDate,
+                dueDate,
+                points,
+                projectId,
+                authorUserId,
+                assignedUserId,
             },
         });
         res.status(201).json(newTask);
