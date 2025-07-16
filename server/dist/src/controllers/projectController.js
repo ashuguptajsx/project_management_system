@@ -36,7 +36,7 @@ const createProject = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         res.status(201).json(newProject);
     }
     catch (error) {
-        res.status(500).json({ error: "Failed to fetch projects" });
+        res.status(500).json({ message: `error in crateProject: ${error.message}` });
     }
 });
 exports.createProject = createProject;
