@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { stat } from "fs";
 import { get } from "http";
 
 export interface Project{
@@ -106,11 +107,16 @@ export const api = createApi({
         }),
         updateTaskStatus : build.mutation<Task, {taskId: number; status: string}>({
             query: ({taskId, status}) =>({
-                url : "/${taskId}/tasks",
-                method: "POST",
-                body: task
+                url :`tasks/${taskId}/status`,
+                method: "PATCH",
+                body: {status},
             }),
-            invalidatesTags: ["Tasks"]
+            invalidatesTags: (result, error, {taskId}) =>[
+                {
+                    type: "Tasks",
+                    id: taskId
+                },
+            ],
         }),
     })
 }) 
