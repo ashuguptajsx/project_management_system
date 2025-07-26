@@ -89,6 +89,13 @@ const Sidebar = () => {
           )}
         </button>
 
+        {showProjects && projects?.map((project) =>(
+           <SidebarLink key = {project.id}
+           icon = {Briefcase}
+           label = {project.name}
+           href = {`/projects/${project.id}`}/>
+        ))}
+
         <button
           onClick={() => {
             setShowPriority((prev) => !prev);
