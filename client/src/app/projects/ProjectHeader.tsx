@@ -3,7 +3,7 @@
 
 import React, { useState } from "react";
 import Header from "@/components/Header";
-import { Clock, Grid3X3, List, Table } from "lucide-react";
+import { Clock, Filter, Grid3X3, List, LucideShare2, Share2, Table } from "lucide-react";
 
 type Props = {
   activeTab: string;
@@ -47,6 +47,19 @@ const ProjectHeader = ({ activeTab, setActiveTab }: Props) => {
             activeTab = {activeTab}
            />
          </div>
+         <div className="flex items-center gap-2">
+          <button className="text-gray-500 hover:text-gray-600">
+            <Filter className="h-5 w-5 text-gray-600" />
+          </button>
+          <button className="text-gray-500 hover:text-gray-600">
+            <Share2 className="h-5 w-5 text-gray-600" />
+          </button>
+          <div className="relative">
+             <input type="text" placeholder="Search Task" 
+             className="w-full rounded-md border border-gray-300 px-2 py-1 text-sm text-gray-500 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+             />
+          </div>
+        </div>
       </div>
     </div>
   );
