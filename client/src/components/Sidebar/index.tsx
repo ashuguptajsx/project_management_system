@@ -55,7 +55,7 @@ const Sidebar = () => {
             </button>
           )}
         </div>
-        {/* Team Info */}
+  
         <div className="flex items-center gap-5 border-y-[1.5px] border-gray-200 px-8 py-4">
           <Image src="/logo.png" alt="logo" width={32} height={32} />
           <div>
